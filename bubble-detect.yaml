@@ -1,0 +1,32 @@
+id: bubble-appname-detect
+
+info:
+  name: Bubble Appname Header Detection
+  author: nagli-wiz
+  severity: info
+  tags: bubble, fingerprint, detection
+
+requests:
+  - raw:
+      - |
+        POST /user/hi HTTP/1.1
+        Host: {{Hostname}}
+        Content-Type: application/json
+        X-Requested-With: XMLHttpRequest
+        Origin: https://{{Hostname}}
+        Referer: https://{{Hostname}}/
+        User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
+        Accept: application/json, text/javascript, */*; q=0.01
+        Accept-Encoding: gzip, deflate, br, zstd
+        Accept-Language: en-GB,en-US;q=0.9,en;q=0.8,eu;q=0.7,he;q=0.6
+        Connection: close
+        Content-Length: 2
+
+        {}
+
+    redirects: true
+    matchers:
+      - type: word
+        part: header
+        words:
+          - "X-Bubble-Appname"
