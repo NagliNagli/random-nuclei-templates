@@ -3,7 +3,7 @@ id: bubble-appname-detect
 info:
   name: Bubble Appname Header Detection
   author: nagli-wiz
-  severity: info
+  severity: critical
   tags: bubble, fingerprint, detection
 
 requests:
